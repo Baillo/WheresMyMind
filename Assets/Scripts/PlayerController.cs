@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
     Vector3 velocity;
     bool isGrounded;
+    bool isMoving;
+    Vector3 oldPos;
 
     [Header("Lanterna")]
     public bool lanternaOnOff;
@@ -34,6 +36,7 @@ public class PlayerController : MonoBehaviour
     public void SetControlavel(bool vl)
 	{
         controlavel = vl;
+        oldPos = transform.position;
 	}
 
     public bool GetControlavel()
@@ -56,7 +59,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         
-        if(GameManager.GetInstance().Inicializado() && controlavel && !GameManager.GetInstance().Finalizado())
+        if(GameManager.GetInstance().Inicializado() && controlavel && !GameManager.GetInstance().Finalizado() && !MenuManager.GetInstance().panelItem.activeInHierarchy)
 		{
             Move();
             if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -93,8 +96,20 @@ public class PlayerController : MonoBehaviour
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 		}
 
-        velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        Vector3 newPos = transform.position;
+
+        if(oldPos != newPos)
+		{
+			if (!AudioHelper.GetInstance().plSource1.isPlaying)
+			{
+                AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource1, AudioHelper.GetInstance().plPassosFloresta);
+            }
+        }
+        else if(oldPos == newPos)
+		{
+            AudioHelper.GetInstance().StopAudio(AudioHelper.GetInstance().plSource1);
+        }
+        oldPos = transform.position;
     }
 
     public void LanternaToggle()
@@ -124,6 +139,8 @@ public class PlayerController : MonoBehaviour
                     GameManager.GetInstance().itensColetados[i] = item;
                     GameManager.GetInstance().qtdItens += 1;
                     if (item.porta != null) item.porta.SetActive(false);
+                    AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().itemColetado);
+                    MenuManager.GetInstance().panelItem.SetActive(true);
                     break;
 				}
 			}
@@ -161,10 +178,16 @@ public class PlayerController : MonoBehaviour
                 AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest3);
                 Destroy(other.gameObject);
             }
+            AudioHelper.GetInstance().PlayRandomAudio();
 		}
         else if (other.gameObject.CompareTag("SoundscapeCabana"))
 		{
             AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scCabana);
+		}
+        else if (other.gameObject.CompareTag("TriggerAudio"))
+		{
+            AudioHelper.GetInstance().PlayRandomAudio();
+            other.gameObject.SetActive(false);          
 		}
 	}
 

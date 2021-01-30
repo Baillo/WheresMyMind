@@ -52,18 +52,45 @@ MonoBehaviour:
   ultimoSoundscape: {fileID: 0}
   plSource1: {fileID: 0}
   plSource2: {fileID: 0}
-  plPassos: {fileID: 0}
-  plBreathing1: {fileID: 0}
-  plBreathing2: {fileID: 0}
-  plBreathing3: {fileID: 0}
-  plChoro1: {fileID: 0}
-  plChoro2: {fileID: 0}
-  plSusto1: {fileID: 0}
-  plSusto2: {fileID: 0}
+  plBreathing1: {fileID: 8300000, guid: d5468843ebb013143afe7541cf1f7d81, type: 3}
+  plBreathing2: {fileID: 8300000, guid: c3088a7d8da6d64429f9b07cad9104ae, type: 3}
+  plBreathing3: {fileID: 8300000, guid: df9ff0bedb2f87a44ae45a2581af6add, type: 3}
+  plChoro1: {fileID: 8300000, guid: 412905a3436d8ab4f95d299ae67a5d2d, type: 3}
+  plChoro2: {fileID: 8300000, guid: 09b743c46ddf6764a9110a92f3b11eb9, type: 3}
+  plSusto1: {fileID: 8300000, guid: 946290d261d30424dba31defb975598e, type: 3}
+  plSusto2: {fileID: 8300000, guid: 24599841d39d9ec4e8351cf5b9ff0b29, type: 3}
+  plPassosFloresta: {fileID: 8300000, guid: 20bdb64a54ee33946be37352272d9c4d, type: 3}
+  plPassosMadeira: {fileID: 8300000, guid: cbf5146d8a0fff34a977dac082ca2d40, type: 3}
+  plHeartbeat: {fileID: 8300000, guid: 20b1e336d009fc74b9a3e54e70d6fa08, type: 3}
+  plCorrendo: {fileID: 8300000, guid: 5b07953868a57c74186f02e68ebbead0, type: 3}
   fogoSource: {fileID: 0}
   fogoLonge: {fileID: 8300000, guid: 96f3f89f5b5f9304ba4d62ac1eb214de, type: 3}
   fogoPerto: {fileID: 8300000, guid: 609e0ddd455331e47ba53be9a2a40264, type: 3}
   falasSource: {fileID: 0}
+  itemSource: {fileID: 0}
+  itemChamado: {fileID: 8300000, guid: 4aa2b6225e5c6f74cbcd70714b8ef624, type: 3}
+  itemColetado: {fileID: 8300000, guid: 5817cad7d5be2d4459900fa079fbd210, type: 3}
+  doorOpen: {fileID: 8300000, guid: 5cc880269bde18241b520c481665b346, type: 3}
+  gateOpen: {fileID: 8300000, guid: 6cbd61bb54ab3d3448c91c5a53bba05b, type: 3}
+  sfxSource: {fileID: 0}
+  sfxs:
+  - {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
+  - {fileID: 8300000, guid: aa2361fedd1d10749bb83e29d15b80fb, type: 3}
+  - {fileID: 8300000, guid: d3ad084806deea6409994c190c95d557, type: 3}
+  - {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
+  - {fileID: 8300000, guid: 724d3eefdedd78f42baf4fcc2ff7f7be, type: 3}
+  - {fileID: 8300000, guid: 22496d5467516dd4896030e7d5b73ae9, type: 3}
+  - {fileID: 8300000, guid: 20b1e336d009fc74b9a3e54e70d6fa08, type: 3}
+  - {fileID: 8300000, guid: 09b743c46ddf6764a9110a92f3b11eb9, type: 3}
+  - {fileID: 8300000, guid: 8cdb1948694740d4880a5985b7250227, type: 3}
+  - {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
+  sfxAmbulancia1: {fileID: 8300000, guid: 8cdb1948694740d4880a5985b7250227, type: 3}
+  sfxAmbulancia2: {fileID: 8300000, guid: 3521a9104f406194682bcc33c6727acc, type: 3}
+  sfxCorujas: {fileID: 8300000, guid: aa2361fedd1d10749bb83e29d15b80fb, type: 3}
+  sfxFolhas: {fileID: 8300000, guid: d3ad084806deea6409994c190c95d557, type: 3}
+  sfxMato1: {fileID: 8300000, guid: 724d3eefdedd78f42baf4fcc2ff7f7be, type: 3}
+  sfxMato2: {fileID: 8300000, guid: 22496d5467516dd4896030e7d5b73ae9, type: 3}
+  sfxTrovao: {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
 --- !u!1 &5615650310602400528
 GameObject:
   m_ObjectHideFlags: 0

@@ -54,7 +54,8 @@ public class MouseLook : MonoBehaviour
 		}*/
 
         
-        if(GameManager.GetInstance().Inicializado() && PlayerController.GetInstance().GetControlavel() && !GameManager.GetInstance().Finalizado())
+        if(GameManager.GetInstance().Inicializado() && PlayerController.GetInstance().GetControlavel() 
+            && !GameManager.GetInstance().Finalizado() && !MenuManager.GetInstance().panelItem.activeInHierarchy)
 		{
             float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;

@@ -98,7 +98,8 @@ public class GameManager : MonoBehaviour
 
             //iniciar audios do gameplay
             AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest1);
-            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().fogoSource, AudioHelper.GetInstance().fogoLonge);
+            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().fogoSource, AudioHelper.GetInstance().fogoPerto);
+            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().plBreathing2);
         }
     }
 

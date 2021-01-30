@@ -18,6 +18,7 @@ public class MenuManager : MonoBehaviour
     public GameObject panelCreditos;
     public GameObject panelCutsceneInicio;
     public GameObject panelCutsceneFinal;
+    public GameObject panelItem;
     public GameObject imgInteragir;
 
     [Header("FadeSplash")]
@@ -73,6 +74,11 @@ public class MenuManager : MonoBehaviour
             creditos = !creditos;
             panelCreditos.SetActive(creditos);
         }
+	}
+
+    public void FecharPanelItem()
+	{
+        panelItem.SetActive(false);
 	}
 
     public void Quit()
