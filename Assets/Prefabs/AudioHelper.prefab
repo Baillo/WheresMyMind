@@ -73,6 +73,10 @@ MonoBehaviour:
   doorOpen: {fileID: 8300000, guid: 5cc880269bde18241b520c481665b346, type: 3}
   gateOpen: {fileID: 8300000, guid: 6cbd61bb54ab3d3448c91c5a53bba05b, type: 3}
   sfxSource: {fileID: 0}
+  sfxsSources:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   sfxs:
   - {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
   - {fileID: 8300000, guid: aa2361fedd1d10749bb83e29d15b80fb, type: 3}
