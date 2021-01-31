@@ -399,6 +399,17 @@ AudioSource:
   m_CorrespondingSourceObject: {fileID: 6170553681350484358, guid: b4f858c7348243d4bbebf05c75d71c6f, type: 3}
   m_PrefabInstance: {fileID: 78953273}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &79862513 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8117596989757355233, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+  m_PrefabInstance: {fileID: 577677564}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &224519472
 GameObject:
   m_ObjectHideFlags: 0
@@ -907,6 +918,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1622094541}
+    - target: {fileID: 6521206749362531017, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6999905466362368871, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -1607,6 +1622,7 @@ MonoBehaviour:
   iconLanternaOff: {fileID: 544315030}
   creditosText: {fileID: 338008861}
   creditosFInaisText: {fileID: 1909472578}
+  viewer: {fileID: 79862513}
   imgItem: {fileID: 430998192}
   spritesItem:
   - {fileID: 21300000, guid: 55bb4c0228847a14cb5a3ec36a7a2ef5, type: 3}

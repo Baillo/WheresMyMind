@@ -136,7 +136,7 @@ public class GameManager : MonoBehaviour
     IEnumerator TimerCutsceneFinal()
 	{
         MenuManager.GetInstance().CreditosFinais();
-        yield return new WaitForSeconds(10);
+        yield return new WaitForSeconds(14);
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

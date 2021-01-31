@@ -29,6 +29,7 @@ public class MenuManager : MonoBehaviour
     public GameObject iconLanternaOff;
     public GameObject creditosText; 
     public GameObject creditosFInaisText;
+    public ScrollRect viewer;
     
 
     [Header("InfoItens")]
@@ -59,6 +60,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(SplashAbertura());
+        panelMenu.SetActive(true);
     }
 
      void Update()
@@ -73,17 +75,18 @@ public class MenuManager : MonoBehaviour
     void LateUpdate()
     {
         if (creditos && Input.GetKeyDown(KeyCode.Escape) && !outraTelaAberta)
-
         {
             if (GameManager.GetInstance().Finalizado())
-            {
-                GameManager.GetInstance().VoltarMenu();
-
+            {               
+                GameManager.GetInstance().VoltarMenu();           
             }
+
             else
             {
                 creditos = !creditos;
+                viewer.verticalNormalizedPosition = 1;
                 panelCreditos.SetActive(creditos);
+                panelMenu.SetActive(!creditos);
                 StartCoroutine(creditosMove());
 
             }
@@ -110,13 +113,13 @@ public class MenuManager : MonoBehaviour
 
         {
             if (GameManager.GetInstance().Finalizado())
-            {
-                GameManager.GetInstance().VoltarMenu();
-
+            {               
+                GameManager.GetInstance().VoltarMenu();          
             }
             else
             {
                 creditos = !creditos;
+                panelMenu.SetActive(!creditos);
                 panelCreditos.SetActive(creditos);
                 StartCoroutine(creditosMove());
 
