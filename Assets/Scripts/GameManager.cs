@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public Itens[] itensColetados;
     public int qtdItens;
     public UnityEvent AoIniciar;
+    public GameObject luz;
 
     public static GameManager GetInstance()
 	{
@@ -35,14 +36,11 @@ public class GameManager : MonoBehaviour
         Application.targetFrameRate = 60;
 	}
     
-    // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1;
 
     }
-
-    // Update is called once per frame
     void Update()
     {
 		if (inicializado && !finalizado)
@@ -58,14 +56,14 @@ public class GameManager : MonoBehaviour
 	{
         pauseToggle = !pauseToggle;
 
-		if (pauseToggle)
+		if (pauseToggle && !MenuManager.GetInstance().outraTelaAberta)
 		{
             AudioHelper.GetInstance().PauseAll();
             MenuManager.GetInstance().panelJogo.SetActive(false);
             MenuManager.GetInstance().panelPause.SetActive(true);
             Time.timeScale = 0;
 		}
-		else
+		else if(!pauseToggle && !MenuManager.GetInstance().outraTelaAberta)
 		{
             AudioHelper.GetInstance().UnpauseAll();
             MenuManager.GetInstance().panelPause.SetActive(false);
@@ -81,11 +79,12 @@ public class GameManager : MonoBehaviour
         MenuManager.GetInstance().panelMenu.SetActive(false);
         MenuManager.GetInstance().panelCutsceneInicio.SetActive(true);
         StartCoroutine(TimerCutsceneInicio());
+        luz.GetComponent<Light>().intensity = 0.2f;
 	}
 
     IEnumerator TimerCutsceneInicio()
 	{
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(8);
         PularCutsceneInicio();
 	}
 
@@ -136,9 +135,10 @@ public class GameManager : MonoBehaviour
 
     IEnumerator TimerCutsceneFinal()
 	{
-        yield return new WaitForSeconds(5);
-        PularCutsceneFinal();
-	}
+        MenuManager.GetInstance().CreditosFinais();
+        yield return new WaitForSeconds(10);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     public void PularCutsceneFinal()
 	{

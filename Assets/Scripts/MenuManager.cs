@@ -27,6 +27,9 @@ public class MenuManager : MonoBehaviour
     public Text legenda;
     public GameObject iconLanternaOn;
     public GameObject iconLanternaOff;
+    public GameObject creditosText; 
+    public GameObject creditosFInaisText;
+    
 
     [Header("InfoItens")]
     public Image imgItem;
@@ -37,6 +40,10 @@ public class MenuManager : MonoBehaviour
     public float delayFadeIn = 1;
     public float velocidadeFadeIn = 1;
 
+  //  public List<Image> cutsceneCenas = new List<Image>();
+
+    private float contador;
+    public bool outraTelaAberta;
     public static MenuManager GetInstance()
 	{
         return instance;
@@ -49,17 +56,40 @@ public class MenuManager : MonoBehaviour
         panelSplash.SetActive(true);
 	}
     
-    // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(SplashAbertura());
     }
 
-    // Update is called once per frame
-    void Update()
+     void Update()
+     {
+
+      if(panelItem && Input.GetKeyDown(KeyCode.Escape))
+        {
+            panelItem.SetActive(false);
+            outraTelaAberta = false;
+        }
+     }
+    void LateUpdate()
     {
-        
+        if (creditos && Input.GetKeyDown(KeyCode.Escape) && !outraTelaAberta)
+
+        {
+            if (GameManager.GetInstance().Finalizado())
+            {
+                GameManager.GetInstance().VoltarMenu();
+
+            }
+            else
+            {
+                creditos = !creditos;
+                panelCreditos.SetActive(creditos);
+                StartCoroutine(creditosMove());
+
+            }
+        }
     }
+
 
     IEnumerator SplashAbertura()
 	{
@@ -77,16 +107,22 @@ public class MenuManager : MonoBehaviour
 
     public void Creditos()
 	{
-		if (GameManager.GetInstance().Finalizado())
-		{
-            GameManager.GetInstance().VoltarMenu();
-		}
-		else
-		{
-            creditos = !creditos;
-            panelCreditos.SetActive(creditos);
+
+        {
+            if (GameManager.GetInstance().Finalizado())
+            {
+                GameManager.GetInstance().VoltarMenu();
+
+            }
+            else
+            {
+                creditos = !creditos;
+                panelCreditos.SetActive(creditos);
+                StartCoroutine(creditosMove());
+
+            }
         }
-	}
+    }
 
     public void FecharPanelItem()
 	{
@@ -101,7 +137,8 @@ public class MenuManager : MonoBehaviour
 	{
         textItem.text = nome;
         imgItem.overrideSprite = image;
-	}
+        outraTelaAberta = true;
+    }
 
     public void AvancarControles()
 	{
@@ -118,4 +155,27 @@ public class MenuManager : MonoBehaviour
 	{
         Application.Quit();
 	}
+
+    IEnumerator creditosMove()
+    {
+        while (creditos)
+        {
+            creditosText.transform.position += Vector3.up;
+            yield return new WaitForSeconds(0.01f);    
+        }
+    }
+
+    public void CreditosFinais()
+    {
+        StartCoroutine(creditosFinaisMove());
+    }
+
+    IEnumerator creditosFinaisMove()
+    {
+        while (creditosFInaisText)
+        {
+            creditosFInaisText.transform.position += Vector3.up;
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
 }
