@@ -16,8 +16,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundMask;
     Vector3 velocity;
     bool isGrounded;
-    bool isMoving;
     Vector3 oldPos;
+    bool chegouCabana;
+    bool chegouCamping;
+    bool chegouAmbulancia;
 
     [Header("Lanterna")]
     public bool lanternaOnOff;
@@ -62,11 +64,11 @@ public class PlayerController : MonoBehaviour
         if(GameManager.GetInstance().Inicializado() && controlavel && !GameManager.GetInstance().Finalizado() && !MenuManager.GetInstance().panelItem.activeInHierarchy)
 		{
             Move();
-            if (Input.GetKeyDown(KeyCode.LeftControl))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 LanternaToggle();
             }
-			if (Input.GetKeyDown(KeyCode.F))
+			if (Input.GetKeyDown(KeyCode.E))
 			{
                 Interagir();
 			}
@@ -80,7 +82,7 @@ public class PlayerController : MonoBehaviour
         //transform.Translate(Vector3.forward * Input.GetAxis("Vertical") * playerSpeed * Time.deltaTime);
         //transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * playerSpeed * Time.deltaTime);
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-       
+        Debug.Log("isGrounded " + isGrounded);
         if(isGrounded && velocity.y < 0)
 		{
             velocity.y = -2f;
@@ -93,9 +95,12 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && isGrounded)
 		{
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            //velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
 		}
 
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
+        
         Vector3 newPos = transform.position;
 
         if(oldPos != newPos)
@@ -118,10 +123,14 @@ public class PlayerController : MonoBehaviour
 
 		if (lanternaOnOff)
 		{
+            MenuManager.GetInstance().iconLanternaOff.SetActive(false);
+            MenuManager.GetInstance().iconLanternaOn.SetActive(true);
             lanterna.SetActive(true);
 		}
 		else
 		{
+            MenuManager.GetInstance().iconLanternaOff.SetActive(true);
+            MenuManager.GetInstance().iconLanternaOn.SetActive(false);
             lanterna.SetActive(false);
 		}
 	}
@@ -138,9 +147,25 @@ public class PlayerController : MonoBehaviour
 				{
                     GameManager.GetInstance().itensColetados[i] = item;
                     GameManager.GetInstance().qtdItens += 1;
-                    if (item.porta != null) item.porta.SetActive(false);
+                    if (item.portaFechada != null && item.portaAberta != null) item.portaFechada.SetActive(false); item.portaAberta.SetActive(true);
                     AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().itemColetado);
                     MenuManager.GetInstance().panelItem.SetActive(true);
+
+                    if(GameManager.GetInstance().qtdItens == 1)
+					{
+                        AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasPrimeiroItem, 1);
+                        MenuManager.GetInstance().InfoPanelItem(item.nome, MenuManager.GetInstance().spritesItem[0]);
+                    }
+                    else if(GameManager.GetInstance().qtdItens == 2)
+					{
+                        AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasSegundoItem, 2);
+                        MenuManager.GetInstance().InfoPanelItem(item.nome, MenuManager.GetInstance().spritesItem[1]);
+                    }
+                    else if(GameManager.GetInstance().qtdItens == 3)
+					{
+                        AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasTerceiroItem, 3);
+                        MenuManager.GetInstance().InfoPanelItem(item.nome, MenuManager.GetInstance().spritesItem[2]);
+                    }
                     break;
 				}
 			}
@@ -171,23 +196,50 @@ public class PlayerController : MonoBehaviour
             if(GameManager.GetInstance().qtdItens == 1)
 			{
                 AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest2);
+                AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().sfxsSources[1], AudioHelper.GetInstance().plChoro2);
+                AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasChoro, 6);
                 Destroy(other.gameObject);
 			}
             else if(GameManager.GetInstance().qtdItens == 2)
 			{
                 AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest3);
+                AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().sfxsSources[2], AudioHelper.GetInstance().sfxTrovao);
+                AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasChuva, 5);
                 Destroy(other.gameObject);
             }
-            AudioHelper.GetInstance().PlayRandomAudio();
+            //AudioHelper.GetInstance().PlayRandomAudio();
 		}
         else if (other.gameObject.CompareTag("SoundscapeCabana"))
 		{
             AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scCabana);
+
+			if (!chegouCabana)
+			{
+                chegouCabana = true;
+                AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasCabana, 4);
+            }
 		}
         else if (other.gameObject.CompareTag("TriggerAudio"))
 		{
             AudioHelper.GetInstance().PlayRandomAudio();
+            AudioHelper.GetInstance().PlaySusto();
             other.gameObject.SetActive(false);          
+		}
+        else if (other.gameObject.CompareTag("TriggerCamping"))
+		{
+			if (!chegouCamping)
+			{
+                chegouCamping = true;
+                AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasFogueira, 9);
+            }
+		}
+        else if (other.gameObject.CompareTag("TriggerAmbulancia"))
+		{
+			if (!chegouAmbulancia)
+			{
+                chegouAmbulancia = true;
+                AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasAmbulancia, 7);
+			}
 		}
 	}
 

@@ -67,6 +67,16 @@ MonoBehaviour:
   fogoLonge: {fileID: 8300000, guid: 96f3f89f5b5f9304ba4d62ac1eb214de, type: 3}
   fogoPerto: {fileID: 8300000, guid: 609e0ddd455331e47ba53be9a2a40264, type: 3}
   falasSource: {fileID: 0}
+  falasInicio: {fileID: 8300000, guid: fd82a7780e9ae7744beb9582a6a0ee03, type: 3}
+  falasPrimeiroItem: {fileID: 8300000, guid: 8dfc34e5bda401d49920e000426b6b60, type: 3}
+  falasSegundoItem: {fileID: 8300000, guid: 17cb32a974ad8f64aa49eeb5145a0316, type: 3}
+  falasTerceiroItem: {fileID: 8300000, guid: 8b453de0988445245b0de366dda79575, type: 3}
+  falasCabana: {fileID: 8300000, guid: 540a7e4940ed75345878f13f4a3f3762, type: 3}
+  falasChuva: {fileID: 8300000, guid: 5c032404f5ff8594980d178614e5ef26, type: 3}
+  falasChoro: {fileID: 8300000, guid: 0db8673ae2c24004ebdda02323d1ac28, type: 3}
+  falasAmbulancia: {fileID: 8300000, guid: 4b8f5c1ddd7d55240aa36fc9f595bb7f, type: 3}
+  falasFogueira: {fileID: 8300000, guid: 5f4489177879e8f42ae8aabf9059d7c2, type: 3}
+  falasAleatorio: {fileID: 8300000, guid: 846621e47c8d0fb47bbd86443e209043, type: 3}
   itemSource: {fileID: 0}
   itemChamado: {fileID: 8300000, guid: 4aa2b6225e5c6f74cbcd70714b8ef624, type: 3}
   itemColetado: {fileID: 8300000, guid: 5817cad7d5be2d4459900fa079fbd210, type: 3}
@@ -95,6 +105,8 @@ MonoBehaviour:
   sfxMato1: {fileID: 8300000, guid: 724d3eefdedd78f42baf4fcc2ff7f7be, type: 3}
   sfxMato2: {fileID: 8300000, guid: 22496d5467516dd4896030e7d5b73ae9, type: 3}
   sfxTrovao: {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
+  allSources:
+  - {fileID: 8022678136496142204}
 --- !u!1 &5615650310602400528
 GameObject:
   m_ObjectHideFlags: 0

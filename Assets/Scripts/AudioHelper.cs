@@ -36,6 +36,16 @@ public class AudioHelper : MonoBehaviour
 
     [Header("FalasPersonagem")]
     public AudioSource falasSource;
+    public AudioClip falasInicio;
+    public AudioClip falasPrimeiroItem;
+    public AudioClip falasSegundoItem;
+    public AudioClip falasTerceiroItem;
+    public AudioClip falasCabana;
+    public AudioClip falasChuva;
+    public AudioClip falasChoro;
+    public AudioClip falasAmbulancia;
+    public AudioClip falasFogueira;
+    public AudioClip falasAleatorio;
 
     [Header("Itens")]
     public AudioSource itemSource;
@@ -55,6 +65,8 @@ public class AudioHelper : MonoBehaviour
     public AudioClip sfxMato1;
     public AudioClip sfxMato2;
     public AudioClip sfxTrovao;
+
+    public AudioSource[] allSources;
 
     public static AudioHelper GetInstance()
 	{
@@ -85,6 +97,58 @@ public class AudioHelper : MonoBehaviour
 		if (!sfxsSources[randomSource].isPlaying)
 		{
             PlayAudio(sfxsSources[randomSource], sfxs[randomSfx]);
+        }
+    }
+
+    public void PlayFala(AudioSource source, AudioClip clip, int text)
+	{
+        MenuManager.GetInstance().legenda.text = MenuManager.GetInstance().textFalas[text];
+        source.clip = clip;
+        source.Play();
+        StartCoroutine(TempoLegenda(source));
+	}
+
+    IEnumerator TempoLegenda(AudioSource source)
+	{
+		while (source.isPlaying)
+		{
+            MenuManager.GetInstance().legenda.gameObject.SetActive(true);
+            yield return null;
+        }
+
+        MenuManager.GetInstance().legenda.gameObject.SetActive(false);
+    }
+
+    public void PlaySusto()
+	{
+        int random = Random.Range(0, 10);
+
+        if(random > 3 && random <= 5)
+		{
+            PlayAudio(plSource2, plSusto1);
+		}
+        else if(random > 6 && random <= 8)
+		{
+            PlayAudio(plSource2, plSusto2);
+        }
+		else
+		{
+            PlayFala(falasSource, falasAleatorio, 8);
+		}
+	}
+
+    public void PauseAll()
+	{
+		for (int i = 0; i < allSources.Length; i++)
+		{
+            allSources[i].Pause();
+		}
+	}
+    public void UnpauseAll()
+	{
+        for (int i = 0; i < allSources.Length; i++)
+        {
+            allSources[i].UnPause();
         }
     }
 

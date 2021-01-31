@@ -9,6 +9,8 @@ TagManager:
   - TrocaSoundscape
   - SoundscapeCabana
   - TriggerAudio
+  - TriggerCamping
+  - TriggerAmbulancia
   layers:
   - Default
   - TransparentFX

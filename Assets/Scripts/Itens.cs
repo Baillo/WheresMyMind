@@ -22,5 +22,7 @@ public class Itens : MonoBehaviour
 {
     public TipoItem tipoItem;
     public IdItem idItem;
-    public GameObject porta;
+    public GameObject portaFechada;
+    public GameObject portaAberta;
+    public string nome;
 }

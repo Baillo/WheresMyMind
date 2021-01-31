@@ -60,12 +60,14 @@ public class GameManager : MonoBehaviour
 
 		if (pauseToggle)
 		{
+            AudioHelper.GetInstance().PauseAll();
             MenuManager.GetInstance().panelJogo.SetActive(false);
             MenuManager.GetInstance().panelPause.SetActive(true);
             Time.timeScale = 0;
 		}
 		else
 		{
+            AudioHelper.GetInstance().UnpauseAll();
             MenuManager.GetInstance().panelPause.SetActive(false);
             MenuManager.GetInstance().panelJogo.SetActive(true);
             Time.timeScale = 1;
@@ -91,7 +93,7 @@ public class GameManager : MonoBehaviour
 	{
 		if (MenuManager.GetInstance().panelCutsceneInicio.activeInHierarchy)
 		{
-            inicializado = true;
+            /*inicializado = true;
             MenuManager.GetInstance().panelCutsceneInicio.SetActive(false);
             MenuManager.GetInstance().panelJogo.SetActive(true);
             PlayerController.GetInstance().SetControlavel(true);
@@ -99,12 +101,31 @@ public class GameManager : MonoBehaviour
             //iniciar audios do gameplay
             AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest1);
             AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().fogoSource, AudioHelper.GetInstance().fogoPerto);
-            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().plBreathing2);
+            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().plBreathing2);*/
+            MenuManager.GetInstance().panelCutsceneInicio.SetActive(false);
+            MenuManager.GetInstance().panelControles.SetActive(true);
         }
+    }
+
+    public void FecharPanelControles()
+	{
+        inicializado = true;
+        MenuManager.GetInstance().panelCutsceneInicio.SetActive(false);
+        MenuManager.GetInstance().panelJogo.SetActive(true);
+        PlayerController.GetInstance().SetControlavel(true);
+
+        //iniciar audios do gameplay
+        AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest1);
+        AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().fogoSource, AudioHelper.GetInstance().fogoPerto);
+        AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().plBreathing2);
+        AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasInicio, 0);
+
+        MenuManager.GetInstance().panelControles.SetActive(false);
     }
 
     public void FimDeJogo()
 	{
+        AudioHelper.GetInstance().PauseAll();
         AudioHelper.GetInstance().StopAudio(AudioHelper.GetInstance().scSource);
         PlayerController.GetInstance().SetControlavel(false);
         finalizado = true;

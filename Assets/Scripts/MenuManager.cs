@@ -19,7 +19,19 @@ public class MenuManager : MonoBehaviour
     public GameObject panelCutsceneInicio;
     public GameObject panelCutsceneFinal;
     public GameObject panelItem;
+    public GameObject panelControles;
+    public GameObject imgControles1;
+    public GameObject imgControles2;
     public GameObject imgInteragir;
+    public string[] textFalas;
+    public Text legenda;
+    public GameObject iconLanternaOn;
+    public GameObject iconLanternaOff;
+
+    [Header("InfoItens")]
+    public Image imgItem;
+    public Sprite[] spritesItem;
+    public Text textItem;
 
     [Header("FadeSplash")]
     public float delayFadeIn = 1;
@@ -79,6 +91,27 @@ public class MenuManager : MonoBehaviour
     public void FecharPanelItem()
 	{
         panelItem.SetActive(false);
+        if(GameManager.GetInstance().qtdItens <= 2)
+		{
+            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().doorOpen);
+        }
+	}
+
+    public void InfoPanelItem(string nome, Sprite image)
+	{
+        textItem.text = nome;
+        imgItem.overrideSprite = image;
+	}
+
+    public void AvancarControles()
+	{
+        imgControles1.SetActive(false);
+        imgControles2.SetActive(true);
+	}
+    public void VoltarControles()
+	{
+        imgControles2.SetActive(false);
+        imgControles1.SetActive(true);
 	}
 
     public void Quit()
