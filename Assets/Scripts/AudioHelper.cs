@@ -65,6 +65,13 @@ public class AudioHelper : MonoBehaviour
     public AudioClip sfxMato1;
     public AudioClip sfxMato2;
     public AudioClip sfxTrovao;
+    public AudioClip sfxChuva;
+    public AudioClip sfxChoroBebe;
+
+    [Header("Cutscene")]
+    public AudioClip cutChuvaAbafada;
+    public AudioClip cutChuvaVento;
+
 
     public AudioSource[] allSources;
 
@@ -119,8 +126,15 @@ public class AudioHelper : MonoBehaviour
         MenuManager.GetInstance().legenda.gameObject.SetActive(false);
     }
 
-    public void PlaySusto()
+    public void PlaySusto(int delay)
 	{
+        StartCoroutine(PlaySustoCoroutine(delay));
+	}
+
+    public IEnumerator PlaySustoCoroutine(int delay)
+	{
+
+        yield return new WaitForSeconds(delay);
         int random = Random.Range(0, 10);
 
         if(random > 3 && random <= 5)

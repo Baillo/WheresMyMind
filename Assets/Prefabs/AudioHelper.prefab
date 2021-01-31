@@ -88,16 +88,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   sfxs:
-  - {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
   - {fileID: 8300000, guid: aa2361fedd1d10749bb83e29d15b80fb, type: 3}
-  - {fileID: 8300000, guid: d3ad084806deea6409994c190c95d557, type: 3}
-  - {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
   - {fileID: 8300000, guid: 724d3eefdedd78f42baf4fcc2ff7f7be, type: 3}
   - {fileID: 8300000, guid: 22496d5467516dd4896030e7d5b73ae9, type: 3}
-  - {fileID: 8300000, guid: 20b1e336d009fc74b9a3e54e70d6fa08, type: 3}
+  - {fileID: 8300000, guid: d3ad084806deea6409994c190c95d557, type: 3}
   - {fileID: 8300000, guid: 09b743c46ddf6764a9110a92f3b11eb9, type: 3}
-  - {fileID: 8300000, guid: 8cdb1948694740d4880a5985b7250227, type: 3}
-  - {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
+  - {fileID: 8300000, guid: 20b1e336d009fc74b9a3e54e70d6fa08, type: 3}
   sfxAmbulancia1: {fileID: 8300000, guid: 8cdb1948694740d4880a5985b7250227, type: 3}
   sfxAmbulancia2: {fileID: 8300000, guid: 3521a9104f406194682bcc33c6727acc, type: 3}
   sfxCorujas: {fileID: 8300000, guid: aa2361fedd1d10749bb83e29d15b80fb, type: 3}
@@ -105,6 +101,10 @@ MonoBehaviour:
   sfxMato1: {fileID: 8300000, guid: 724d3eefdedd78f42baf4fcc2ff7f7be, type: 3}
   sfxMato2: {fileID: 8300000, guid: 22496d5467516dd4896030e7d5b73ae9, type: 3}
   sfxTrovao: {fileID: 8300000, guid: 944cf6eb82a68f14cb23489cfdf15d2d, type: 3}
+  sfxChuva: {fileID: 8300000, guid: 5ff4f912a26fcd74c85fa251df77f19c, type: 3}
+  sfxChoroBebe: {fileID: 8300000, guid: 09b743c46ddf6764a9110a92f3b11eb9, type: 3}
+  cutChuvaAbafada: {fileID: 8300000, guid: 74f1e2dafc8cba14497d02ad2b266f61, type: 3}
+  cutChuvaVento: {fileID: 8300000, guid: ae90c967d68b996409f6e19a3cfc2ca7, type: 3}
   allSources:
   - {fileID: 8022678136496142204}
 --- !u!1 &5615650310602400528

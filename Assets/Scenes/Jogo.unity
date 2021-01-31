@@ -691,6 +691,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2974543540139436452, guid: f171ab094ebd06d479a4077d2418581f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6513365857369631668, guid: f171ab094ebd06d479a4077d2418581f, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -902,6 +906,26 @@ PrefabInstance:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2971094081593577517, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1475206882}
+    - target: {fileID: 2971094081593577517, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971094081593577517, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: PularCutsceneInicio
+      objectReference: {fileID: 0}
+    - target: {fileID: 2971094081593577517, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3013948509154148223, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5405642877460227807, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -914,10 +938,18 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1475206882}
+    - target: {fileID: 5734134968794777446, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FecharControles
+      objectReference: {fileID: 0}
     - target: {fileID: 6333564499344117784, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1622094541}
+    - target: {fileID: 6466312689870420029, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.00012207031
+      objectReference: {fileID: 0}
     - target: {fileID: 6521206749362531017, guid: 6f54c8bc202b7a543845485aeff6ab5c, type: 3}
       propertyPath: m_Color.a
       value: 0
@@ -1067,6 +1099,7 @@ GameObject:
   m_Component:
   - component: {fileID: 925309274}
   - component: {fileID: 925309275}
+  - component: {fileID: 925309276}
   m_Layer: 0
   m_Name: Spot Light
   m_TagString: Untagged
@@ -1149,6 +1182,25 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!95 &925309276
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 925309273}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbf3fc0e4f57e7d4da0328272a2a094f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1024378901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1625,9 +1677,9 @@ MonoBehaviour:
   viewer: {fileID: 79862513}
   imgItem: {fileID: 430998192}
   spritesItem:
-  - {fileID: 21300000, guid: 55bb4c0228847a14cb5a3ec36a7a2ef5, type: 3}
-  - {fileID: 21300000, guid: 464eb8c356b8c174584e5d5bc1d8f600, type: 3}
-  - {fileID: 21300000, guid: 06bc894d8a058a24c9737ec0a0c0c87e, type: 3}
+  - {fileID: 21300000, guid: 8fad49001ff71794cb58fa03265d062d, type: 3}
+  - {fileID: 21300000, guid: b42e016c4281be2488e2c4ee7cd5601b, type: 3}
+  - {fileID: 21300000, guid: 1ed386bea24703f4f969fd6db47d6913, type: 3}
   textItem: {fileID: 1990552559}
   delayFadeIn: 1
   velocidadeFadeIn: 1

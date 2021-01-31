@@ -196,14 +196,15 @@ public class PlayerController : MonoBehaviour
             if(GameManager.GetInstance().qtdItens == 1)
 			{
                 AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest2);
-                AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().sfxsSources[1], AudioHelper.GetInstance().plChoro2);
+                AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().sfxsSources[1], AudioHelper.GetInstance().sfxChoroBebe);
                 AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasChoro, 6);
                 Destroy(other.gameObject);
 			}
             else if(GameManager.GetInstance().qtdItens == 2)
 			{
                 AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest3);
-                AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().sfxsSources[2], AudioHelper.GetInstance().sfxTrovao);
+                AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().sfxsSources[1], AudioHelper.GetInstance().sfxTrovao);
+                AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().sfxsSources[2], AudioHelper.GetInstance().sfxChuva);
                 AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasChuva, 5);
                 Destroy(other.gameObject);
             }
@@ -222,7 +223,7 @@ public class PlayerController : MonoBehaviour
         else if (other.gameObject.CompareTag("TriggerAudio"))
 		{
             AudioHelper.GetInstance().PlayRandomAudio();
-            AudioHelper.GetInstance().PlaySusto();
+            AudioHelper.GetInstance().PlaySusto(5);
             other.gameObject.SetActive(false);          
 		}
         else if (other.gameObject.CompareTag("TriggerCamping"))

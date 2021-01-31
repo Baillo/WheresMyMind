@@ -77,10 +77,17 @@ public class GameManager : MonoBehaviour
         AoIniciar.Invoke();
         PlayerController.GetInstance().SetControlavel(false);
         MenuManager.GetInstance().panelMenu.SetActive(false);
-        MenuManager.GetInstance().panelCutsceneInicio.SetActive(true);
-        StartCoroutine(TimerCutsceneInicio());
+        MenuManager.GetInstance().panelControles.SetActive(true);
+        //StartCoroutine(TimerCutsceneInicio());
         luz.GetComponent<Light>().intensity = 0.2f;
 	}
+
+    public void FecharControles()
+	{
+        MenuManager.GetInstance().panelControles.SetActive(false);
+        MenuManager.GetInstance().panelCutsceneInicio.SetActive(true);
+        StartCoroutine(TimerCutsceneInicio());
+    }
 
     IEnumerator TimerCutsceneInicio()
 	{
@@ -101,8 +108,21 @@ public class GameManager : MonoBehaviour
             AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest1);
             AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().fogoSource, AudioHelper.GetInstance().fogoPerto);
             AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().plBreathing2);*/
+            //MenuManager.GetInstance().panelCutsceneInicio.SetActive(false);
+            //MenuManager.GetInstance().panelControles.SetActive(true);
+
+            inicializado = true;
             MenuManager.GetInstance().panelCutsceneInicio.SetActive(false);
-            MenuManager.GetInstance().panelControles.SetActive(true);
+            MenuManager.GetInstance().panelJogo.SetActive(true);
+            PlayerController.GetInstance().SetControlavel(true);
+
+            //iniciar audios do gameplay
+            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().scSource, AudioHelper.GetInstance().scForest1);
+            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().fogoSource, AudioHelper.GetInstance().fogoPerto);
+            AudioHelper.GetInstance().PlayAudio(AudioHelper.GetInstance().plSource2, AudioHelper.GetInstance().plBreathing2);
+            AudioHelper.GetInstance().PlayFala(AudioHelper.GetInstance().falasSource, AudioHelper.GetInstance().falasInicio, 0);
+
+            MenuManager.GetInstance().panelCutsceneInicio.SetActive(false);
         }
     }
 
